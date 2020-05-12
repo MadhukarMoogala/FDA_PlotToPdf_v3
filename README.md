@@ -12,7 +12,7 @@ This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-aut
 
 ### Working Gif
 
-![MyGif](D:\Work\Forge\FDA_PlotToPdf_v3\plottopdf.gif)
+![MyGif](https://github.com/MadhukarMoogala/FDA_PlotToPdf_v3/blob/master/plottopdf.gif)
 
 
 ### Prerequisites
