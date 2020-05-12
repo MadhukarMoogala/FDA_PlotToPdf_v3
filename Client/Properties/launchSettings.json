@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ClientV3": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\inputs\\sample.zip\" -o \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\outputs\"",
+      "environmentVariables": {
+        "FORGE_CLIENT_SECRET": "zlqEG8Jq9URQxYyH",
+        "FORGE_CLIENT_ID": "GImnjBPJLKROK4uZqNws9xI5NhpUGDP1"
+      }
+    }
+  }
+}

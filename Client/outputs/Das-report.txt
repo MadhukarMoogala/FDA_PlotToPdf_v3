@@ -1,0 +1,125 @@
+[05/12/2020 12:46:02] Job information:
+"CommandLine":[
+  "$(engine.path)\\accoreconsole.exe /dwgzipHost $(args[HostDwg].path) /s $(settings[script].path)"
+]
+"Settings":{
+  "script": {
+    "value": "_tilemode 0 -export _pdf _all result.pdf\n"
+  },
+  "dasreportfailedlimits": {
+    "value": "true",
+    "isEnvironmentVariable": true
+  }
+}
+"Id":"4cfc67d169a04cdca8afa04abd0a49f1"
+"ActivityId":"AutoCAD.PlotToPDFDwgzip+prod"
+"Engine.Id":"Autodesk.AutoCAD!25"
+"Apps": [
+]
+"BoundArguments":{
+  "HostDwg": {
+    "zip": true,
+    "localName": "package",
+    "pathInZip": "hostdwg",
+    "url": "https://developer.api.autodesk.com/Masked:BpFGlkxIfBJovk+ycCgjlkBHYIk="
+  },
+  "Result": {
+    "localName": "result.pdf",
+    "url": "https://developer.api.autodesk.com/Masked:la2ptlcffQYL54lahc72VBvyqzw=",
+    "headers": {
+      "Authorization": "Masked:dTY5EcTOXI5+lVJRwl1P2RkRyvQ="
+    },
+    "verb": "put"
+  },
+  "onProgress": {
+    "ondemand": true,
+    "url": "https://wlnr5sjl3a.execute-api.us-east-1.amazonaws.com/Masked:UK/Z3b5X3xUWxXiH6C9r9i9UlRU=",
+    "headers": {
+      "Content-Type": "application/json",
+      "x-das-authorize": "awssigv4(us-east-1)",
+      "x-ads-token-data": "{\"access_token\":{\"client_id\":\"GImnjBPJLKROK4uZqNws9xI5NhpUGDP1\"},\"scope\":\"code:all\",\"expires_in\":3599,\"client_id\":\"GImnjBPJLKROK4uZqNws9xI5NhpUGDP1\"}"
+    },
+    "verb": "put"
+  }
+}
+"Quotas":{
+  "limitDownloads": 100,
+  "limitUploads": 100,
+  "limitDownloadSizeMB": 100,
+  "limitUploadSizeMB": 100,
+  "limitProcessingTimeSec": 100,
+  "limitTotalUncompressedAppsSizeInMB": 500
+}
+[05/12/2020 12:46:02] Starting work item 4cfc67d169a04cdca8afa04abd0a49f1
+[05/12/2020 12:46:02] Start download phase.
+[05/12/2020 12:46:02] Start downloading file https://developer.api.autodesk.com/oss/v2/signedresources/7dd942ac-7d75-49fa-99c3-c1a1e1b5335b?region=US.
+[05/12/2020 12:46:03] End downloading https://developer.api.autodesk.com/oss/v2/signedresources/7dd942ac-7d75-49fa-99c3-c1a1e1b5335b?region=US. 787488 bytes have been unpacked to folder T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\package.
+[05/12/2020 12:46:03] End download phase.
+[05/12/2020 12:46:04] Start preparing script and command line parameters.
+[05/12/2020 12:46:04] Command line: [ /dwgzipHost T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\package\hostdwg /s T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\setting_script.scr]
+[05/12/2020 12:46:04] End preparing script and command line parameters.
+[05/12/2020 12:46:04] Start script phase.
+[05/12/2020 12:46:04] ### Command line arguments: /isolate HKEY_CURRENT_USER\SOFTWARE\AppDataLow\Software\Autodesk\CoreUser\WorkItem_4cfc67d169a04cdca8afa04abd0a49f1 "T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\userdata" /exe "T:\Aces\AcesRoot\23.1\coreEngine\Exe\accoreconsole.exe"  /dwgzipHost T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\package\hostdwg /s T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\setting_script.scr.
+[05/12/2020 12:46:04] Start AutoCAD Core Engine standard output dump.
+[05/12/2020 12:46:04] Redirect stdout (file: T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\tmp\accc18682).
+[05/12/2020 12:46:04] AcCoreConsole: StdOutConsoleMode: processed-output: disabled,auto
+[05/12/2020 12:46:04] AutoCAD Core Engine Console - Copyright 2019 Autodesk, Inc.  All rights reserved. (Q.48.Z.11)
+[05/12/2020 12:46:04] Execution Path:
+[05/12/2020 12:46:04] T:\Aces\AcesRoot\23.1\coreEngine\Exe\accoreconsole.exe
+[05/12/2020 12:46:04] Current Directory: T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1
+[05/12/2020 12:46:04] Isolating to regkey=HKEY_CURRENT_USER\SOFTWARE\AppDataLow\Software\Autodesk\CoreUser\WorkItem_4cfc67d169a04cdca8afa04abd0a49f1, userDataFolder=T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\userdata.
+[05/12/2020 12:46:05] Version Number: Q.48.Z.11 (UNICODE)
+[05/12/2020 12:46:05] Resolve Xref "PropertyLine": .\PropertyLine.dwg
+[05/12/2020 12:46:05] "PropertyLine" loaded: T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\package\PropertyLine.dwg
+[05/12/2020 12:46:05] "PropertyLine" reference file may have changed since host drawing was last saved.
+[05/12/2020 12:46:05] Resolve Xref "HatchingGradients": .\HatchingGradients.dwg
+[05/12/2020 12:46:05] "HatchingGradients" loaded: T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\package\HatchingGradients.dwg
+[05/12/2020 12:46:05] "HatchingGradients" reference file may have changed since host drawing was last saved.
+[05/12/2020 12:46:06] Regenerating model.
+[05/12/2020 12:46:06] Command:
+[05/12/2020 12:46:06] Command:
+[05/12/2020 12:46:06] Command:
+[05/12/2020 12:46:06] Command: _tilemode
+[05/12/2020 12:46:06] Enter new value for TILEMODE <1>: 0 Regenerating layout.
+[05/12/2020 12:46:06] Regenerating model - caching viewports.
+[05/12/2020 12:46:07] Command: -export Enter file format [Dwf/dwfX/Pdf] <dwfX>_pdf Enter plot area [Current layout/All layouts]<All layouts>: _all
+[05/12/2020 12:46:07] Enter file name <hostdwg-Layout3.pdf>: result.pdf
+[05/12/2020 12:46:07] Regenerating layout.
+[05/12/2020 12:46:07] Regenerating model.
+[05/12/2020 12:46:07] Effective plotting area:  641.12 wide by 499.05 high
+[05/12/2020 12:46:07] Effective plotting area:  640.99 wide by 498.96 high
+[05/12/2020 12:46:07] Plotting viewport 2.
+[05/12/2020 12:46:07] Plotting viewport 1.
+[05/12/2020 12:46:07] Regenerating layout.
+[05/12/2020 12:46:07] Regenerating model.
+[05/12/2020 12:46:07] Effective plotting area:  200.00 wide by 263.00 high
+[05/12/2020 12:46:07] Effective plotting area:  155.96 wide by 205.57 high
+[05/12/2020 12:46:07] Plotting viewport 2.
+[05/12/2020 12:46:07] Plotting viewport 1.
+[05/12/2020 12:46:07] Regenerating layout.
+[05/12/2020 12:46:07] Regenerating model.
+[05/12/2020 12:46:07] Effective plotting area:  200.00 wide by 263.00 high
+[05/12/2020 12:46:07] Effective plotting area:  155.96 wide by 205.57 high
+[05/12/2020 12:46:07] Plotting viewport 2.
+[05/12/2020 12:46:07] Plotting viewport 1.
+[05/12/2020 12:46:08] End AutoCAD Core Engine standard output dump.
+[05/12/2020 12:46:08] End script phase.
+[05/12/2020 12:46:09] Start upload phase.
+[05/12/2020 12:46:09] Uploading T:\Aces\Jobs\4cfc67d169a04cdca8afa04abd0a49f1\result.pdf to https://developer.api.autodesk.com/oss/v2/buckets/dasplottingworks/objects/20200512061602_input_result.pdf.
+[05/12/2020 12:46:09] End upload phase.
+[05/12/2020 12:46:09] Job finished with result Succeeded
+[05/12/2020 12:46:09] Job Status:
+{
+  "status": "success",
+  "reportUrl": "https://dasprod-store.s3.amazonaws.com/workItem/JigSawV3/4cfc67d169a04cdca8afa04abd0a49f1/report.txt?AWSAccessKeyId=ASIATGVJZKM3M4U7OWZV&Expires=1589291263&x-amz-security-token=IQoJb3JpZ2luX2VjEP3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQD3q2CnOLKIC5qSlrdvB6M334qpouFkN9IbUak%2BWXVP6QIhAKDJY%2B7Dh5jPOx6JRAlI0kJyQpqKN%2FEEZbQKQQFBlfwPKtUBCEYQARoMMjIwNDczMTUyMzEwIgw6SGnBBJRXRUFw2UwqsgEhOSwM54oyb%2FpIxKkQYAdTR9i5IXQSUeXa66dfMSb1q3mOMjgFS26ERfFjEZV34XRrW9skwfeyQWgeIONgY4dIjo2W%2B1Agwtx%2B09Z%2BeUlA9qhEczYOJc%2BQjgXudB38twEYXX3hl35ZMoi9QLHxBMc9PL5KBVTuw%2BaMdbfQtIYghHQMBLgv%2BywkfWW9nznZjm8%2BgihHk38ID5CG5l%2BcQjQj4%2BOXSGmbzUYzdEnJlilZ8RLfMKKq6vUFOt8BFNt9PsI%2FVagE2TRpnN2GyysGeRIwyKaFR7qJevvmO64toJoAjJo%2BdAYYv3HFdxaX4q%2FuIIVSobPLsx99f2rVsCwnpQh8KKouBTooeM8I1wPzI1y4P%2FWxt8XCj6BtSIoNQIQipMYe7PkZJg9PxIx59VJWn8EFz3ujGXj1TBQE8fTdqmnv%2FD4y%2FpPh4dc2OLLKWdbNQqRNylc64Wea1F8rLfRTvoZJdS5vQSdnkxR%2F%2F50DtZ1H30FVFt3zY1%2F9ZLWRKFmHj0WQ4O3FI1%2F0pm9IlzmvYT3SFUfs2nMrV3mfTQ%3D%3D&Signature=k3Xe6R67rZKaYR2QXOL3TP2pgiE%3D",
+  "stats": {
+    "timeQueued": "2020-05-12T12:46:02.6198234Z",
+    "timeDownloadStarted": "2020-05-12T12:46:02.8266851Z",
+    "timeInstructionsStarted": "2020-05-12T12:46:04.5227817Z",
+    "timeInstructionsEnded": "2020-05-12T12:46:09.0206653Z",
+    "timeUploadEnded": "2020-05-12T12:46:09.2672903Z",
+    "bytesDownloaded": 787488,
+    "bytesUploaded": 271121
+  },
+  "id": "4cfc67d169a04cdca8afa04abd0a49f1"
+}
