@@ -8,7 +8,7 @@ A CLI utility based on .NET Core technology to print a AutoCAD drawing in to a p
 
 Uses [Forge Design Automation V3](https://forge.autodesk.com/en/docs/design-automation/v3)
 
-This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-automation/v3/developers_guide/basics/#typical-workflows) `AutoCAD.PlotToPDFDwgzip+prod`
+This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-automation/v3/developers_guide/basics/#typical-workflows) `AutoCAD.PlotToPDFDwg+prod`
 
 ### Working Gif
 
@@ -26,52 +26,50 @@ This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-aut
 ```bash
 git clone https://github.com/MadhukarMoogala/FDA_PlotToPdf_v3.git
 cd FDA_PlotToPdf_v3\client
-notepad appsettings.users.json feed with your Forge Credentials
+touch appsettings.users.json
 dotnet build
-dotnet run -i "<inputZipFileWithDrawings>" -o "<outputFolder>"
+dotnet run -i "<input Drawing>" -o "<outputFolder>"
 ```
 `appsettings.users.json`
 
-```
+```json
 {
   "Forge": {
-    "ClientId": "ForgeClientId",
-    "ClientSecret": "ForgeClientSecret"
+    "ClientId": "Your ForgeClientId",
+    "ClientSecret": "Your ForgeClientSecret"
   }
 }
 ```
-
-`launchsettings.json`
-
-```
-{
-  "profiles": {
-    "ClientV3": {
-      "commandName": "Project",
-      "commandLineArgs": "-i \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\inputs\\sample.zip\" -o \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\outputs\"",
-      "environmentVariables": {
-        "FORGE_CLIENT_SECRET": "ForgeClientId",
-        "FORGE_CLIENT_ID": "ForgeClientSecret"
-      }
-    }
-  }
-}
-```
-
 
 
 
 #### Instructions To Debug
 
+```bash
+notepad Properties\launchSettings.json
 ```
-notepad launchsettings.json
+`launchsettings.json`
+
+```json
+{
+  "profiles": {
+    "ClientV3": {
+      "commandName": "Project",
+      "commandLineArgs": "-i \"inputs\\blocks_and_tables_-_metric.dwg\" -o \"outputs\"",
+      "workingDirectory": "D:\\Work\\GithubRepos\\FDA_PlotToPdf_v3\\Client",
+      "environmentVariables": {
+        "FORGE_CLIENT_SECRET": "",
+        "FORGE_CLIENT_ID": ""
+      }
+    }
+  }
+}
 ```
 ### License
 This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT). Please see the [LICENSE](LICENSE) file for full details.
 
 ### Written by
 Madhukar Moogala, [Forge Partner Development](http://forge.autodesk.com)  @galakar
-
 
 
 

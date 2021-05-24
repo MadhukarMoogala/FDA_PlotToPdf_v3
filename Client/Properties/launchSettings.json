@@ -2,10 +2,11 @@
   "profiles": {
     "ClientV3": {
       "commandName": "Project",
-      "commandLineArgs": "-i \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\inputs\\sample.zip\" -o \"D:\\Work\\Forge\\FDA_PlotToPdf_v3\\Client\\outputs\"",
+      "commandLineArgs": "-i \"inputs\\blocks_and_tables_-_metric.dwg\" -o \"outputs\"",
+      "workingDirectory": "D:\\Work\\GithubRepos\\FDA_PlotToPdf_v3\\Client",
       "environmentVariables": {
-        "FORGE_CLIENT_SECRET": "zlqEG8Jq9URQxYyH",
-        "FORGE_CLIENT_ID": "GImnjBPJLKROK4uZqNws9xI5NhpUGDP1"
+        "FORGE_CLIENT_SECRET": "",
+        "FORGE_CLIENT_ID": ""
       }
     }
   }

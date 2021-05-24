@@ -39,7 +39,7 @@ namespace ClientV3
             {
                 FullName = "Plot To PDF",
                 Description = "A utility to convert AutoCAD Drawing file to a PDF document!",
-                ExtendedHelpText = "\nclient.exe -i <input zip file> -o <output folder>\n"
+                ExtendedHelpText = "\nclient.exe -i <input AutoCAD Drawing file> -o <output folder>\n"
 
             };
            

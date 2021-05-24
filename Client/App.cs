@@ -23,7 +23,7 @@
         /// <summary>
         /// Defines the ActivityName.
         /// </summary>
-        static string ActivityName = "AutoCAD.PlotToPDFDwgzip+prod";
+        static string ActivityName = "AutoCAD.PlotToPDF+prod";
 
         /// <summary>
         /// Defines the PackageName.
@@ -34,7 +34,7 @@
         /// <summary>
         /// Defines the Owner.
         /// </summary>
-        static readonly string Owner = "DasPlottingWorks";
+        static readonly string Owner = "dasplottingwork";
 
         //need to set, singed resource, like OSS, S3.
         /// <summary>
@@ -184,7 +184,7 @@
                 ActivityId = myActivity,
                 Arguments = new Dictionary<string, IArgument>()
                 {
-                    { "HostDwg", new XrefTreeArgument() { Verb=Verb.Get, Url = downloadUrl, PathInZip="hostdwg"} },
+                    { "HostDwg", new XrefTreeArgument() { Verb=Verb.Get, Url = downloadUrl} },
                     { "Result", new XrefTreeArgument(){
                       Verb=Verb.Put,
                       Url = string.Format("https://developer.api.autodesk.com/oss/v2/buckets/{0}/objects/{1}",  Owner.ToLower(),outputFileOssName ),
