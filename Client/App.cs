@@ -1,6 +1,7 @@
 ﻿namespace ClientV3
 {
     using Autodesk.Forge;
+    using Autodesk.Forge.Client;
     using Autodesk.Forge.Core;
     using Autodesk.Forge.DesignAutomation;
     using Autodesk.Forge.DesignAutomation.Model;
@@ -13,6 +14,7 @@
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Threading;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -43,10 +45,11 @@
         static string UploadUrl = "";
 
         /// <summary>
-        /// Defines the downloadUrl.
+        /// Defines the bucketKey.
         /// </summary>
-        static string downloadUrl = "";
+        static string bucketKey = "";
 
+        
         /// <summary>
         /// Gets or sets the InternalToken.
         /// </summary>
@@ -97,6 +100,8 @@
         {
             TwoLeggedApi oauth = new TwoLeggedApi();
             string grantType = "client_credentials";
+
+            Console.WriteLine($"{config.ClientId} \t {config.ClientSecret} ");
             dynamic bearer = await oauth.AuthenticateAsync(config.ClientId,
               config.ClientSecret,
               grantType,
@@ -121,8 +126,8 @@
                 Console.WriteLine($"Creating Bucket....");
                 dynamic oauth = await GetInternalAsync();
 
-                // 1. ensure bucket existis
-                string bucketKey = Owner.ToLower();
+                // 1. ensure bucket exists
+                bucketKey = $"{config.ClientId.ToLower()}_{Guid.NewGuid():N}";
                 Console.WriteLine($"Creating Bucket {bucketKey}....");
                 BucketsApi buckets = new BucketsApi();
                 buckets.Configuration.AccessToken = oauth.access_token;
@@ -131,32 +136,12 @@
                     PostBucketsPayload bucketPayload = new PostBucketsPayload(bucketKey, null, PostBucketsPayload.PolicyKeyEnum.Transient);
                     dynamic bucketsRes = await buckets.CreateBucketAsync(bucketPayload, "US");
                 }
-                catch
+                catch(Exception ex)
                 {
                     // in case bucket already exists
-                    Console.WriteLine($"\tBucket {bucketKey} exists");
+                    Console.WriteLine($"\tBucket {bucketKey} exists ..{ex.StackTrace}");
                 };
-                ObjectsApi objects = new ObjectsApi();
-                objects.Configuration.AccessToken = oauth.access_token;
-
-                //2. Upload input file and get signed URL
-                string inputFileNameOSS = string.Format("{0}_input_{1}", DateTime.Now.ToString("yyyyMMddhhmmss"), Path.GetFileName(FilePaths.InputFile));
-                Console.WriteLine($"Uploading input file {inputFileNameOSS} to {bucketKey}..... ");
-                using (StreamReader streamReader = new StreamReader(FilePaths.InputFile))
-                {
-                    dynamic res = await objects.UploadObjectAsync(bucketKey, inputFileNameOSS, (int)streamReader.BaseStream.Length, streamReader.BaseStream, "application/octet-stream");
-                }
-                
-
-
-                try
-                {
-                    PostBucketsSigned bucketsSigned = new PostBucketsSigned(60);
-                    dynamic signedResp = await objects.CreateSignedResourceAsync(bucketKey, inputFileNameOSS, bucketsSigned, "read");
-                    downloadUrl = signedResp.signedUrl;
-                    Console.WriteLine($"\tSuccess: File uploaded to... \n\t{downloadUrl}");
-                }
-                catch { }
+               
 
             }
 
@@ -169,6 +154,44 @@
             await SubmitWorkItemAsync(ActivityName);
         }
 
+        static void onUploadProgress(float progress, TimeSpan elapsed, List<UploadItemDesc> objects)
+        {
+            Console.WriteLine("progress: {0} elapsed: {1} objects: {2}", progress, elapsed, string.Join(", ", objects));
+        }
+        private static async Task<string> GetObjectId(string bucketKey, string objectKey, dynamic oauth, string fileSavePath)
+        {
+            try
+            {
+                ObjectsApi objectsApi = new ObjectsApi();
+                objectsApi.Configuration.AccessToken = oauth.access_token;
+               // var data = await File.ReadAllBytesAsync(fileSavePath);
+
+                using FileStream _stream = File.Open(fileSavePath, FileMode.Open);
+                List<UploadItemDesc> uploadRes = await objectsApi.uploadResources(bucketKey,
+                       new List<UploadItemDesc> {
+                        new UploadItemDesc(objectKey, _stream)
+                       },
+                       new Dictionary<string, object>()
+                       {					
+					    { "minutesExpiration", 60 }					   
+				       },
+                       onUploadProgress
+                      );
+                Console.WriteLine("**** Upload object(s) response(s):");
+                DynamicDictionary objValues = uploadRes[0].completed;
+                objValues.Dictionary.TryGetValue("objectId", out var id);
+
+                return id?.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception when preparing input url:{ex.Message}");
+                throw;
+            }
+
+        }
+
         /// <summary>
         /// The SubmitWorkItemAsync.
         /// </summary>
@@ -178,20 +201,33 @@
         {
             Console.WriteLine("Submitting up WorkItem...");
             dynamic oauth = await GetInternalAsync();
-            string outputFileOssName = string.Format("{0}_input_{1}", DateTime.Now.ToString("yyyyMMddhhmmss"), "result.pdf"); ;
-            var workItemStatus = await api.CreateWorkItemAsync(new Autodesk.Forge.DesignAutomation.Model.WorkItem()
+            string outputFileOss= string.Format("{0}_output_{1}", DateTime.Now.ToString("yyyyMMddhhmmss"), "result.pdf");
+            string inputFileOss = string.Format("{0}_input_{1}", DateTime.Now.ToString("yyyyMMddhhmmss"), Path.GetFileName(FilePaths.InputFile));
+            var workItemStatus = await api.CreateWorkItemAsync(new WorkItem()
             {
                 ActivityId = myActivity,
                 Arguments = new Dictionary<string, IArgument>()
                 {
-                    { "HostDwg", new XrefTreeArgument() { Verb=Verb.Get, Url = downloadUrl} },
-                    { "Result", new XrefTreeArgument(){
-                      Verb=Verb.Put,
-                      Url = string.Format("https://developer.api.autodesk.com/oss/v2/buckets/{0}/objects/{1}",  Owner.ToLower(),outputFileOssName ),
-                      Headers = new Dictionary<string, string>()
-                      {
-                         { "Authorization", "Bearer " + oauth.access_token }
-                      }
+                    { "HostDwg",
+                        new XrefTreeArgument()
+                        {
+                        Verb=Verb.Get,
+                        Url = await GetObjectId(bucketKey,inputFileOss,oauth,Path.GetFullPath(FilePaths.InputFile)),
+                        Headers = new Dictionary<string, string>()
+                              {
+                                 { "Authorization", "Bearer " + oauth.access_token }
+                              }
+                        }
+                    },
+                    { "Result",
+                        new XrefTreeArgument()
+                        {
+                              Verb=Verb.Put,
+                              Url =  await GetObjectId(bucketKey,outputFileOss,oauth,Path.GetFullPath(FilePaths.InputFile)),
+                              Headers = new Dictionary<string, string>()
+                              {
+                                 { "Authorization", "Bearer " + oauth.access_token }
+                              }
                     }
                     }
                 }
@@ -206,9 +242,8 @@
             }
             Console.WriteLine($"{workItemStatus.Status}.");
             var fname = await DownloadToDocsAsync(workItemStatus.ReportUrl, "Das-report.txt");
-            Console.WriteLine($"Downloaded {fname}.");
-            UploadUrl = string.Format("https://developer.api.autodesk.com/oss/v2/buckets/{0}/objects/{1}", Owner.ToLower(), outputFileOssName);
-            var result = await DownloadToDocsAsync(UploadUrl, outputFileOssName, true);
+            Console.WriteLine($"Downloaded {fname}.");            
+            var result = await DownloadToDocsAsync(UploadUrl, outputFileOss, true);
             Console.WriteLine($"Downloaded {result}.");
         }
 
@@ -230,33 +265,12 @@
                     Console.WriteLine("\tThere are already resources associated with this clientId or nickname is in use. Please use a different clientId or nickname.");
                     return false;
                 }
-                await resp.EnsureSuccessStatusCodeAsync();
+                resp.EnsureSuccessStatusCode();
             }
             return true;
         }
 
-        /// <summary>
-        /// The CreateZip.
-        /// </summary>
-        /// <returns>The <see cref="string"/>.</returns>
-        static string CreateZip()
-        {
-            Console.WriteLine("\tGenerating autoloader zip...");
-            string zip = "package.zip";
-            if (File.Exists(zip))
-                File.Delete(zip);
-            using (var archive = ZipFile.Open(zip, ZipArchiveMode.Create))
-            {
-                string bundle = PackageName + ".bundle";
-                string name = "PackageContents.xml";
-                archive.CreateEntryFromFile(name, Path.Combine(bundle, name));
-                name = "Jigsaw.dll";
-                archive.CreateEntryFromFile(name, Path.Combine(bundle, "Contents", name));
-                name = "Newtonsoft.Json.dll";
-                archive.CreateEntryFromFile(name, Path.Combine(bundle, "Contents", name));
-            }
-            return zip;
-        }
+
 
         /// <summary>
         /// The DownloadToDocsAsync.
@@ -270,15 +284,27 @@
             var report = FilePaths.OutPut;
             var fname = Path.Combine(report, localFile);
             if (File.Exists(fname))
-                File.Delete(fname);
+                File.Delete(fname);            
             using var client = new HttpClient();
             if (isOauthRequired)
             {
                 dynamic oAuth = await GetInternalAsync();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", oAuth.access_token);
+                ObjectsApi objectsApi = new ObjectsApi();
+                objectsApi.Configuration.AccessToken = oAuth.access_token;
 
+                Autodesk.Forge.Client.ApiResponse<dynamic> res = await objectsApi.getS3DownloadURLAsyncWithHttpInfo(
+                                        bucketKey,
+                                        localFile,
+                                        new Dictionary<string, object>
+                                        {
+                                            { "minutesExpiration", 15.0 },
+                                            { "useCdn", true }
+                                        });
+                url = res.Data.url;
+                
             }
-            var response = await client.GetAsync(url);
+
+            HttpResponseMessage response = await client.GetAsync(url);
             response.EnsureSuccessStatusCode();
             using (var fs = new FileStream(fname, FileMode.CreateNew))
             {

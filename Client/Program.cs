@@ -35,6 +35,7 @@ namespace ClientV3
     {
         public static async Task Main(string[] args)
         {
+      
             var cli = new CommandLineApplication(throwOnUnexpectedArg: true)
             {
                 FullName = "Plot To PDF",
@@ -94,14 +95,13 @@ namespace ClientV3
                     builder.AddJsonFile("appsettings.user.json");
                     // Next line means that you can use Forge__ClientId and Forge__ClientSecret environment variables
                     builder.AddEnvironmentVariables();
-                    // Finally, allow the use of "legacy" FORGE_CLIENT_ID and FORGE_CLIENT_SECRET environment variables
-                    builder.AddForgeAlternativeEnvironmentVariables();
                 })
                 .ConfigureLogging((hostContext, builder) =>
                 {
                     // set up console logging, could be skipped but useful
                     builder.AddConfiguration(hostContext.Configuration.GetSection("Logging"));
                     builder.AddConsole();
+                    
                 })
                 .ConfigureServices((hostContext, services) =>
                 {

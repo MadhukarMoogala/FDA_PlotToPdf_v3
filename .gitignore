@@ -353,3 +353,5 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio
+/Client/appsettings.user.json
+/Client/appsettings.user.json
