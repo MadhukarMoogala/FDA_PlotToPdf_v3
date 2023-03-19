@@ -8,7 +8,7 @@ A CLI utility based on .NET Core technology to print a AutoCAD drawing in to a p
 
 Uses [Forge Design Automation V3](https://forge.autodesk.com/en/docs/design-automation/v3)
 
-This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-automation/v3/developers_guide/basics/#typical-workflows) `AutoCAD.PlotToPDFDwg+prod`
+This sample uses Shared [Activity](https://forge.autodesk.com/en/docs/design-automation/v3/developers_guide/basics/#typical-workflows) `AutoCAD.PlotToPDF+prod`
 
 ### Working Gif
 
