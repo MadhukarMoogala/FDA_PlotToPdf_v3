@@ -1,102 +1,99 @@
-[03/19/2023 14:58:41] Job information:
-"CommandLine":[
-  "$(engine.path)\\accoreconsole.exe /i \"$(args[HostDwg].path)\" /s $(settings[script].path) /suppressGraphics"
-]
-"Settings":{
-  "script": {
-    "value": "_tilemode 0 -export _pdf _all result.pdf\n"
-  }
-}
-"Id":"14d1bba3f1a447b7a909edc1bd02c8ad"
-"ActivityId":"AutoCAD.PlotToPDF+prod"
-"Engine.Id":"Autodesk.AutoCAD_24_2!30"
-"Apps": [
-]
-"BoundArguments":{
-  "HostDwg": {
-    "localName": "$(HostDwg)",
-    "url": "urn:adsk.objects:os.object:uo1ryupncnpb2widtw9aqgmzjn6z41m5_88609ce57975402ea429521397b74cde/20230319082835_input_blocks_and_tables_-_metric.dwg",
-    "headers": {
-      "Authorization": "Masked:d1or0N2koH7+QNUx7de8H0GBiRw="
+[11/18/2024 13:33:45] Job information:
+{
+  "CommandLine": [
+    "$(engine.path)\\accoreconsole.exe /i \"$(args[HostDwg].path)\" /s $(settings[script].path) /suppressGraphics"
+  ],
+  "Settings": {
+    "script": {
+      "value": "_tilemode 0 -export _pdf _all result.pdf\n"
+    },
+    "dasOpenNetwork": {
+      "value": "true",
+      "isEnvironmentVariable": true
     }
   },
-  "Result": {
-    "localName": "result.pdf",
-    "url": "urn:adsk.objects:os.object:uo1ryupncnpb2widtw9aqgmzjn6z41m5_88609ce57975402ea429521397b74cde/20230319082835_output_result.pdf",
-    "headers": {
-      "Authorization": "Masked:d1or0N2koH7+QNUx7de8H0GBiRw="
+  "Id": "2a82f250092e4da18c42b052b57ca0a6",
+  "ActivityId": "AutoCAD.PlotToPDF+prod",
+  "EngineId": "Autodesk.AutoCAD_25_0!39",
+  "Apps": [],
+  "BoundArguments": {
+    "HostDwg": {
+      "localName": "$(HostDwg)",
+      "url": "urn:adsk.objects:os.object:dasplottingmad_11f86207464c4c9f94a20de35c28aa43/20241118070339_input_blocks_and_tables_-_metric.dwg",
+      "headers": {
+        "Authorization": "Masked:Jf2IhoBPH5UBcJBiLPEDRm+P2V0="
+      },
+      "verb": "get"
     },
-    "verb": "put"
+    "Result": {
+      "localName": "result.pdf",
+      "url": "urn:adsk.objects:os.object:dasplottingmad_11f86207464c4c9f94a20de35c28aa43/20241118070339_output_result.pdf",
+      "headers": {
+        "Authorization": "Masked:Jf2IhoBPH5UBcJBiLPEDRm+P2V0="
+      },
+      "verb": "put"
+    }
   },
-  "onProgress": {
-    "ondemand": true,
-    "url": "https://wlnr5sjl3a.execute-api.us-east-1.amazonaws.com/Masked:UK/Z3b5X3xUWxXiH6C9r9i9UlRU=",
-    "headers": {
-      "Content-Type": "application/json",
-      "x-das-authorize": "awssigv4(us-east-1)",
-      "x-ads-token-data": "{\"access_token\":{\"client_id\":\"Uo1RYupnCnPb2WidtW9AqGMzjN6Z41M5\"},\"scope\":\"code:all\",\"expires_in\":3594,\"client_id\":\"Uo1RYupnCnPb2WidtW9AqGMzjN6Z41M5\"}",
-      "x-ads-gateway-secret": "Masked:F6VCvje5cIP0zOGCxgARjmSopQI="
-    },
-    "verb": "put"
+  "Quotas": {
+    "limitProcessingTimeSec": 900,
+    "limitTotalUncompressedAppsSizeInMB": 500
   }
 }
-"Quotas":{
-  "limitProcessingTimeSec": 100,
-  "limitTotalUncompressedAppsSizeInMB": 500
-}
-[03/19/2023 14:58:41] Starting work item 14d1bba3f1a447b7a909edc1bd02c8ad
-[03/19/2023 14:58:41] Start download phase.
-[03/19/2023 14:58:41] Start downloading input: verb - 'GET', url - 'urn:adsk.objects:os.object:uo1ryupncnpb2widtw9aqgmzjn6z41m5_88609ce57975402ea429521397b74cde/20230319082835_input_blocks_and_tables_-_metric.dwg'
-[03/19/2023 14:58:41] End downloading file. Source=urn:adsk.objects:os.object:uo1ryupncnpb2widtw9aqgmzjn6z41m5_88609ce57975402ea429521397b74cde/20230319082835_input_blocks_and_tables_-_metric.dwg,LocalFile=T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\20230319082835_input_blocks_and_tables_-_metric.dwg,BytesDownloaded=255708,Duration=460ms
-[03/19/2023 14:58:41] End download phase successfully.
-[03/19/2023 14:58:41] Start preparing script and command line parameters.
-[03/19/2023 14:58:41] Command line: [ /i "T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\20230319082835_input_blocks_and_tables_-_metric.dwg" /s T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\setting_script.scr /suppressGraphics]
-[03/19/2023 14:58:41] End preparing script and command line parameters.
-[03/19/2023 14:58:41] Start script phase.
-[03/19/2023 14:58:41] Start AutoCAD Core Engine standard output dump.
-[03/19/2023 14:58:41] Redirect stdout (file: T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\tmp\accc46602).
-[03/19/2023 14:58:41] AcCoreConsole: StdOutConsoleMode: processed-output: disabled,auto
-[03/19/2023 14:58:41] AutoCAD Core Engine Console - Copyright 2022 Autodesk, Inc.  All rights reserved. (T.53.Z.336)
-[03/19/2023 14:58:41] Execution Path:
-[03/19/2023 14:58:41] T:\Aces\AcesRoot\24.2\coreEngine\Exe\accoreconsole.exe
-[03/19/2023 14:58:41] Current Directory: T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad
-[03/19/2023 14:58:41] Isolating to regkey=HKEY_CURRENT_USER\SOFTWARE\AppDataLow\Software\Autodesk\CoreUser\WorkItem_14d1bba3f1a447b7a909edc1bd02c8ad, userDataFolder=T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\userdata.
-[03/19/2023 14:58:42] Version Number: T.53.Z.336 (UNICODE)
-[03/19/2023 14:58:42] LogFilePath has been set to the working folder.
-[03/19/2023 14:58:43] Regenerating model.
-[03/19/2023 14:58:43] AutoCAD menu utilities loaded.
-[03/19/2023 14:58:43] Command:
-[03/19/2023 14:58:43] Command:
-[03/19/2023 14:58:43] Command:
-[03/19/2023 14:58:43] Command: _tilemode
-[03/19/2023 14:58:43] Enter new value for TILEMODE <1>: 0 Regenerating layout.
-[03/19/2023 14:58:43] Regenerating model - caching viewports.
-[03/19/2023 14:58:44] Command: -export Enter file format [Dwf/dwfX/Pdf] <dwfX>_pdf Enter plot area [Current layout/All layouts]<Current Layout>: _all
-[03/19/2023 14:58:44] Enter file name <20230319082835_input_blocks_and_tables_-_metric-ISO A1.pdf>: result.pdf
-[03/19/2023 14:58:44] Effective plotting area:  831.00 wide by 560.00 high
-[03/19/2023 14:58:44] Effective plotting area:  247.44 wide by 339.32 high
-[03/19/2023 14:58:44] Plotting viewport 2.
-[03/19/2023 14:58:44] Effective plotting area:  203.81 wide by 231.94 high
-[03/19/2023 14:58:44] Plotting viewport 3.
-[03/19/2023 14:58:44] Plotting viewport 1.
-[03/19/2023 14:58:45] End AutoCAD Core Engine standard output dump.
-[03/19/2023 14:58:45] End script phase.
-[03/19/2023 14:58:45] Start upload phase.
-[03/19/2023 14:58:45] Uploading 'T:\Aces\Jobs\14d1bba3f1a447b7a909edc1bd02c8ad\result.pdf': verb - 'PUT', url - 'urn:adsk.objects:os.object:uo1ryupncnpb2widtw9aqgmzjn6z41m5_88609ce57975402ea429521397b74cde/20230319082835_output_result.pdf'
-[03/19/2023 14:58:46] End upload phase successfully.
-[03/19/2023 14:58:46] Job finished with result Succeeded
-[03/19/2023 14:58:46] Job Status:
+[11/18/2024 13:33:45] Starting work item 2a82f250092e4da18c42b052b57ca0a6
+[11/18/2024 13:33:45] Start download phase.
+[11/18/2024 13:33:45] Start downloading input: verb - 'Get', url - 'urn:adsk.objects:os.object:dasplottingmad_11f86207464c4c9f94a20de35c28aa43/20241118070339_input_blocks_and_tables_-_metric.dwg'
+[11/18/2024 13:33:45] End downloading file. Source=urn:adsk.objects:os.object:dasplottingmad_11f86207464c4c9f94a20de35c28aa43/20241118070339_input_blocks_and_tables_-_metric.dwg,LocalFile=C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\20241118070339_input_blocks_and_tables_-_metric.dwg,BytesDownloaded=255708,Duration=247ms
+[11/18/2024 13:33:45] End download phase successfully.
+[11/18/2024 13:33:45] Start preparing script and command line parameters.
+[11/18/2024 13:33:45] Command line: [ /i "C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\20241118070339_input_blocks_and_tables_-_metric.dwg" /s C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\setting_script.scr /suppressGraphics]
+[11/18/2024 13:33:45] End preparing script and command line parameters.
+[11/18/2024 13:33:45] Start script phase.
+[11/18/2024 13:33:45] Start AutoCAD Core Engine standard output dump.
+[11/18/2024 13:33:46] Redirect stdout (file: C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\tmp\accc37762).
+[11/18/2024 13:33:46] AcCoreConsole: StdOutConsoleMode: processed-output: disabled,auto
+[11/18/2024 13:33:46] AutoCAD Core Engine Console - Copyright 2024 Autodesk, Inc.  All rights reserved. (V.101.Z.107)
+[11/18/2024 13:33:46] Execution Path:
+[11/18/2024 13:33:46] C:\DARoot\AcesRoot\25.0\coreEngine\Exe\accoreconsole.exe
+[11/18/2024 13:33:46] Current Directory: C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6
+[11/18/2024 13:33:46] Isolating to regkey=HKEY_CURRENT_USER\SOFTWARE\AppDataLow\Software\Autodesk\CoreUser\WorkItem_2a82f250092e4da18c42b052b57ca0a6, userDataFolder=C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\userdata.
+[11/18/2024 13:33:46] INFO: Isolation create time: 285 ms.
+[11/18/2024 13:33:47] Version Number: V.101.Z.107 (UNICODE)
+[11/18/2024 13:33:47] LogFilePath has been set to the working folder.
+[11/18/2024 13:33:47] Regenerating model.
+[11/18/2024 13:33:48] AutoCAD menu utilities loaded.
+[11/18/2024 13:33:48] Command:
+[11/18/2024 13:33:48] Command:
+[11/18/2024 13:33:48] Command:
+[11/18/2024 13:33:48] Command: _tilemode
+[11/18/2024 13:33:48] Enter new value for TILEMODE <1>: 0 Regenerating layout.
+[11/18/2024 13:33:48] Regenerating model - caching viewports.
+[11/18/2024 13:33:48] Command: -export Enter file format [Dwf/dwfX/Pdf] <dwfX>_pdf Enter plot area [Current layout/All layouts]<Current Layout>: _all
+[11/18/2024 13:33:48] Enter file name <20241118070339_input_blocks_and_tables_-_metric-ISO A1.pdf>: result.pdf
+[11/18/2024 13:33:48] Effective plotting area:  831.00 wide by 560.00 high
+[11/18/2024 13:33:48] Effective plotting area:  247.44 wide by 339.32 high
+[11/18/2024 13:33:48] Plotting viewport 2.
+[11/18/2024 13:33:48] Effective plotting area:  203.81 wide by 231.94 high
+[11/18/2024 13:33:48] Plotting viewport 3.
+[11/18/2024 13:33:48] Plotting viewport 1.
+[11/18/2024 13:33:49] End AutoCAD Core Engine standard output dump.
+[11/18/2024 13:33:49] End script phase.
+[11/18/2024 13:33:49] Start upload phase.
+[11/18/2024 13:33:49] Uploading 'C:\DARoot\Jobs\2a82f250092e4da18c42b052b57ca0a6\result.pdf': verb - 'Put', url - 'urn:adsk.objects:os.object:dasplottingmad_11f86207464c4c9f94a20de35c28aa43/20241118070339_output_result.pdf'
+[11/18/2024 13:33:50] End upload phase successfully.
+[11/18/2024 13:33:50] Job finished with result Succeeded
+[11/18/2024 13:33:50] Job Status:
 {
   "status": "success",
-  "reportUrl": "https://dasprod-store.s3.amazonaws.com/workItem/madly/14d1bba3f1a447b7a909edc1bd02c8ad/report.txt?X-Amz-Expires=4620&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIFZxFuG9z0DRf61zFZm%2Bdyj7BVe3xBhAlK4fQwHkjHVgAiA%2B7VT%2FOqNscfdqPtM0lRxCQhfD6p2nwyJdkMGQ6vwhQiqAAwhfEAMaDDIyMDQ3MzE1MjMxMCIM2j1jJXebVXIbGkw5Kt0C1oiJc7Ey2t1YSMMthmjWES89fipS3bO6BktNvF5JrmhZyzA8Z%2B4F4rBc%2FSi2jzBwECsO2nx%2BijwQIH64jh5OeqUUuZO2NWq%2BWDzJoVCO1UuZLz67LF79dqxxbmFlaPLD8bJBgnOOmxwla%2Fs9NLEyF8y2OTN%2BFfmTLSsfPSPd%2FWFZnYy%2FFRa8Z%2FwjvTUvqNRn62vfbCRmxW6S96Hg9RMYsmxQ4Y7t%2FWb1k4UW5a7TCFaSLdwQ6V10LXzc%2BvhBnOoqqldGzbeWRLQuIGKX4qzQcoeWEVL8fZ9f6hAwIiwXgGkICl1je%2FDVinJk1eaITru%2B9j5TgtpZfAbZJFsTmlzZa1JiI1rfojhJkOX4KzpnQU%2F1oJ94AJsYgpUqUVPeCYmaglnA2nyErPEhpL9GbR%2FaxwCWMN1LdgnH%2FwxQ4bavMa98%2FKNTeTcmmV8khCgIEJSCUuOHd%2B1NDWRoPuqt%2FjCpq9ygBjqfASNTqNAO6T7%2FWO2AapTzdPEsoMmDJT%2FgUDrnuWRfCU4n8zz9nKRmAE9DbY%2FssNFLp4ThvaokuiOnOmNqOwnA9WLLehsQkuXlrGgyll3UvXYZ7UduNYmUovEbJTwMArxtWeBMQVRX0ha66dEVzFtRanKsQVu3rAInWJXNS5fZEPJa0a30VOZ7tl0pzYWkr4tDLhMYfGaMqsLW6jzsyDtzaA%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATGVJZKM3CFV6NLGB/20230319/us-east-1/s3/aws4_request&X-Amz-Date=20230319T145840Z&X-Amz-SignedHeaders=host&X-Amz-Signature=7e6157ac372ea6fcf3b18ba32e7a2c5a2ae38d7a920ab4a9c81e947d41224e0d",
+  "reportUrl": "https://dasprod-store.s3.amazonaws.com/workItem/dasplottingmad/2a82f250092e4da18c42b052b57ca0a6/report.txt?X-Amz-Expires=4620&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEMX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQD9Y9es%2BvAm3LtYZWKjnixA6atnpe0ZR9VQl1aGv5tgEwIhAOiawNPejE4dWPRTp7FmiIwCqbIcCqJ7BqVZh7caJNxiKoADCF4QBBoMMjIwNDczMTUyMzEwIgxXRNJLSG8rM0FfMeUq3QIdJynwhQdcXaGkbMYxc27gppxoefZY%2BFb1Nnz87ybwDGamaiJ2So0aEAeHsSIB%2BUMuJgFA8X1uhEeZzhnSC6FY83Qh8pzwpK2n6YCe5rQwbJKLRb0QqQTJVgzOf8i4zHCoy0uMceQpvq7K0KEGaqVHCDisp0jEvRXr8SOQW2D2uVPcQJZmPUFLGsbggdzEVVT1g%2FGTZBBuIKG3Yjz4Lp%2Fs8ZJrjkGIeVWYF%2FJZ1dWVU2EdNPzE72peRBsFhlk7xq7J8EbDUR%2BR1uCIasU4%2FB%2B%2BCokNc1OwdWkHz6w9qv%2Bk2bZmX9U2vz9lNZTThWxKdQxmy36lecLnVPgoumpJtfwf4%2BuWfVQhlHNcs0L0J7ChqAz93Zw4N0XwRKTAbEbB5me%2BZ%2FMQYptDsWUk2biRAlQw7T51DOM5AWafW09X7hIZ%2BygGM84XRWnqwP7%2FzE51NWnEjdft48KLXUVlshShMPLy7LkGOp0Ban%2BIPES9i5t6QV2qvCOr%2BVxb3XShW4gXJgafYE8wod5qHSrDTFumzRyuloC%2BxkXsGX8DSnBoEYNi4XRSNALsN2L%2B18fd9jdjjMhDkHMwOXLX%2FPioBoxAIyNEQSRIK5N4F95wdKIXA89wvDxIYwJRs4zKJg5zvJSGU%2FhfQPtTt81p4ppQuSk4Ucs5i9aXiNVmcwiN045%2FJm6R8TNF2g%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATGVJZKM3EZK6RKHT%2F20241118%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20241118T133345Z&X-Amz-SignedHeaders=host&X-Amz-Signature=0e0de6a4b03c3df396ef7a20c3fcda206fd45507cc2eb3755f8045bf7cda07a8",
+  "activityId": "AutoCAD.PlotToPDF+prod",
   "stats": {
-    "timeQueued": "2023-03-19T14:58:40.982624Z",
-    "timeDownloadStarted": "2023-03-19T14:58:41.0528327Z",
-    "timeInstructionsStarted": "2023-03-19T14:58:41.627729Z",
-    "timeInstructionsEnded": "2023-03-19T14:58:45.8712119Z",
-    "timeUploadEnded": "2023-03-19T14:58:46.3430021Z",
+    "timeQueued": "2024-11-18T13:33:45.3122809Z",
+    "timeDownloadStarted": "2024-11-18T13:33:45.3781081Z",
+    "timeInstructionsStarted": "2024-11-18T13:33:45.6948677Z",
+    "timeInstructionsEnded": "2024-11-18T13:33:49.6927217Z",
+    "timeUploadEnded": "2024-11-18T13:33:50.1551719Z",
     "bytesDownloaded": 255708,
-    "bytesUploaded": 261397
+    "bytesUploaded": 261421
   },
-  "id": "14d1bba3f1a447b7a909edc1bd02c8ad"
+  "id": "2a82f250092e4da18c42b052b57ca0a6"
 }
