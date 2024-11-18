@@ -1,8 +1,8 @@
 ## FDA_PlotToPdf_v3
 
-[![Data-Management](https://img.shields.io/badge/Data%20Management-v1-green.svg)](http://developer.autodesk.com/)
-[![Design-Automation](https://img.shields.io/badge/Design%20Automation-v3-green.svg)](http://developer.autodesk.com/)
-[![netCore](https://img.shields.io/badge/netcore-3.1-green)](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
+[![Data-Management](https://img.shields.io/badge/Data%20Management-v2-green.svg)](http://aps.autodesk.com/)
+[![Design-Automation](https://img.shields.io/badge/Design%20Automation-v3-green.svg)](http://aps.autodesk.com/)
+[![.NET](https://img.shields.io/badge/.NET-8.0-green)](https://dotnet.microsoft.com/download/dotnet-core/current/runtime)
 ### Description
 A CLI utility based on .NET Core technology to print a AutoCAD drawing in to a pdf.
 
